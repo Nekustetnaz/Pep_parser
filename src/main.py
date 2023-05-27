@@ -103,18 +103,19 @@ def latest_versions(session):
         return None
     soup = BeautifulSoup(response.text, features='lxml')
     sidebar = soup.find('div', {'class': 'sphinxsidebarwrapper'})
-    ul_tags = sidebar.find_all('ul')
-    for ul in ul_tags:
-        if 'All versions' in ul.text:
-            a_tags = ul.find_all('a')
+    ul_elements = sidebar.find_all('ul')
+    for ul_tag in ul_elements:
+        if 'All versions' in ul_tag.text:
+            version_links = ul_tag.find_all('a')
             break
         raise Exception('Ничего не нашлось')
     results = [('Ссылка на документацию', 'Версия', 'Статус')]
     pattern = r'Python (?P<version>\d\.\d+) \((?P<status>.*)\)'
-    for a_tag in a_tags:
-        link = a_tag['href']
-        text_match = re.search(pattern, a_tag.text)
-        version, status = text_match.groups() if text_match else a_tag.text, ''
+    for version_link in version_links:
+        link = version_link['href']
+        text_match = re.search(pattern, version_link.text)
+        version, status = text_match.groups() if text_match \
+            else version_link.text, ''
         results.append((link, version, status))
     return results
 
