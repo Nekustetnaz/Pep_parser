@@ -24,7 +24,7 @@ The service has the next options:
 ```
 
 ### Technologies
-Python 3
+Python 3 <br>
 BeautifulSoup4
 
 ### Author
