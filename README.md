@@ -1,10 +1,9 @@
 # PEP parsing service
 
-## Description
-This project parses information about PEP documentation from the Python website
-It has several modes and output options.
+### Description
+This project parses information about PEP documentation from the Python website. It compares the status on the PEP page with the status in the general list, calculates the number of PEPs in each status and the total number of PEPs, then saves the result to a csv file.
 
-## Run service:
+### Run service
 To run the service, use the command with preferred options:
 ```
 python main.py [mode] [options]
@@ -24,9 +23,9 @@ The service has the next options:
 -o pretty | --output file  # write the result in a .csv file
 ```
 
-## Technologies
+### Technologies
 Python 3
 BeautifulSoup4
 
-## The author of the project
+### Author
 Anton Akulov - https://github.com/Nekustetnaz
